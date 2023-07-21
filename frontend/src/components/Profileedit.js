@@ -21,7 +21,7 @@ const EditProfileForm = () => {
         .then((response) => {
           // console.log('getting in',response);
           let data=response.data;
-          const datavals='';
+          let datavals='';
           // console.log('data',data);
           data.forEach((item)=>{
             if(item.email===user_data){
