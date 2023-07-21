@@ -262,9 +262,9 @@ const Dashboard = () => {
   useEffect(() =>{
     axios.get(`${BASE_URL}/api/data1/dashboard/${user_data}/${currpage}`)
     .then((res)=>{
-      console.log("res.data",res.data);
+      // console.log("res.data",res.data);
         if(res.data.vals[0]?.email===user_data){
-          console.log(res.data.paginatedexpenses);
+          // console.log(res.data.paginatedexpenses);
           setRows(res.data.paginatedexpenses);
           settotalpages(res.data.totalpages);
           settotalvals(res.data.vals[0].rowS[0].id+1);
@@ -291,12 +291,12 @@ const Dashboard = () => {
   },[currpage]);
 
   useEffect(() =>{
-    console.log('rows,columns',rows,columns);
+    // console.log('rows,columns',rows,columns);
   },[rows,columns]);
 
   const onSave = async(e) => {
     e.preventDefault();
-    console.log('rows,columns2',rows,columns);
+    // console.log('rows,columns2',rows,columns);
     try {
       // console.log(formData);
       await axios.post(
@@ -313,7 +313,7 @@ const Dashboard = () => {
               alert("Failed");
           }
           else{
-              console.log('resdata',res.data);
+              // console.log('resdata',res.data);
               alert("Saved successfully");
               // setRows(res.data.rowS);
               // setColumns(res.data.columnS);
@@ -331,9 +331,9 @@ const Dashboard = () => {
   function normalizeDate() {
     const date=rows[0].cells[0].value.split(' ')[0];
     const year=rows[0].cells[0].value.split(' ')[1];
-    console.log('date',date,'year',year);
+    // console.log('date',date,'year',year);
     const ind= (months.indexOf(date)+1)%12;
-    console.log('ind',ind);
+    // console.log('ind',ind);
     const nextmonth=months[ind];
     const nextyear= ind===0?parseInt(year)+1:parseInt(year);
     return nextmonth+" "+nextyear;
@@ -361,7 +361,7 @@ const Dashboard = () => {
 
   const handleAddColumn = () => {
     const newColumnId = columns?.length + 1;
-    console.log("newcolumnid",newColumnId);
+    // console.log("newcolumnid",newColumnId);
     const newColumn = { id: newColumnId, heading: `Category ${newColumnId-2}` };
     setColumns([...columns, newColumn]);
     
@@ -389,13 +389,13 @@ const Dashboard = () => {
   const handleAddRow = () => {
     const newRowId = totvals + 1;
     settotalvals(newRowId);
-    console.log('totvals',totvals);
+    // console.log('totvals',totvals);
     const newRowCells = columns?.map((column, index) => ({ id: column.id, value: index===0 ? getNextMonthYear(): "", }));
     // console.log(newRowCells);
     const newRow = { id: newRowId, cells: newRowCells };
-    console.log("newRow",newRow);
+    // console.log("newRow",newRow);
     setRows([newRow, ...allrows]); 
-    console.log("rows",rows);
+    // console.log("rows",rows);
   };
 
   const handleDeleteColumn = (columnId) => {
@@ -464,7 +464,7 @@ const Dashboard = () => {
   const calculateSavings = (row) => {
     const monthlyIncome = row?.cells?.find((cell) => cell.id === 2)?.value || 0;
     const total = calculateRowTotal(row);
-    console.log(monthlyIncome, total);
+    // console.log(monthlyIncome, total);
     return  monthlyIncome-total;
   };
 
@@ -472,7 +472,7 @@ const Dashboard = () => {
     // const currentDate = new Date(getCurrentMonthYear());
     // currentDate.setMonth(currentDate.getMonth() + rows?.length);
     // const options = { month: "long", year: "numeric" };
-    console.log("newmonth", normalizeDate());
+    // console.log("newmonth", normalizeDate());
     return normalizeDate();
   };
 
@@ -486,7 +486,7 @@ const Dashboard = () => {
   const handlenext=()=>{
     if(currpage<totalpages){
       setcurrpage(currpage+1);
-      console.log("currpage",currpage);
+      // console.log("currpage",currpage);
     }
     
   }

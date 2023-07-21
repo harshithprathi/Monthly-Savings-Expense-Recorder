@@ -16,31 +16,26 @@ const EditProfileForm = () => {
   const fetchdata = async () => {
     try {
         // const response = await fetch(`${BASE_URL}/api/dataupdate/profile`);
-        console.log('getting in to try');
-        await axios.get(`${BASE_URL}/api/data1/dashboard/profile`)
+        // console.log('getting in to try');
+        await axios.get(`${BASE_URL}/api/dataupdate/profile`)
         .then((response) => {
-          console.log('getting in',response);
+          // console.log('getting in',response);
           let data=response.data;
           const datavals='';
-          console.log('data',data);
-          data.map((item)=>{
+          // console.log('data',data);
+          data.forEach((item)=>{
             if(item.email===user_data){
                 datavals=item;
-                console.log("datavals1111111",datavals);
+                // console.log("datavals1111111",datavals);
                 setFirstName(datavals.firstName);
                 setLastName(datavals.lastName);
                 setOccupation(datavals.occupation);
-            }
-            else{
-                console.log("datavals failed");
-                alert('You are logged out, please login again.');
-                navigate('/login');
             }
         });
         
         })
         .catch((error) =>{
-          console.log("datavals failed");
+          // console.log("datavals failed");
           alert('You are logged out, please login again.');
           navigate('/login');
           console.log(error);
@@ -56,7 +51,7 @@ const EditProfileForm = () => {
 
 
   useEffect(() => {
-    console.log('hi');
+    // console.log('hi');
     fetchdata();
   },[]);
 
