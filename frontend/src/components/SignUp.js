@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 // import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 // import { useGoogleLogin } from '@react-oauth/google';
 import '../../src/styles.css';
+import BASE_URL from '../constants/constant';
 const bcryptjs = require("bcryptjs");
 
 // import { toast } from 'react-toastify';
@@ -52,7 +53,7 @@ function SignUpPage() {
         const hashpassword=bcryptjs.hashSync(formData.password);
         formData.password=hashpassword;
         history('/login');
-        await axios.post('http://127.0.0.1:4000/api/auth1/signup', formData);
+        await axios.post(`${BASE_URL}/api/auth1/signup`, formData);
         alert('Signup successful');
         
         // setVerificationSent(true);

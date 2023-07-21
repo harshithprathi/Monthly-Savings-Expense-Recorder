@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import '../../src/styles.css';
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
+import BASE_URL from '../constants/constant';
 // import Parse from 'parse/dist/parse.min.js';
 
 
@@ -21,7 +22,7 @@ function Login() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     try{
-        await axios.post('http://127.0.0.1:4000/api/auth2/login', { email: email, password: password })
+        await axios.post(`${BASE_URL}/api/auth2/login`, { email: email, password: password })
         .then(res => {
           // console.log(res)
             if(res.data==="fail"){

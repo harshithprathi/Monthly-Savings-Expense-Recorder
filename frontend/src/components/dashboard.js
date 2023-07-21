@@ -230,6 +230,7 @@ import React, { useState,useEffect } from "react";
 import '../../src/styles.css';
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
+import BASE_URL from "../constants/constant";
 // import Parse from 'parse/dist/parse.min.js';
 
 
@@ -259,7 +260,7 @@ const Dashboard = () => {
   const [visibleRows, setVisibleRows] = useState(12);
 
   useEffect(() =>{
-    axios.get(`http://127.0.0.1:4000/api/data1/dashboard/${user_data}/${currpage}`)
+    axios.get(`${BASE_URL}/api/data1/dashboard/${user_data}/${currpage}`)
     .then((res)=>{
       console.log("res.data",res.data);
         if(res.data.vals[0]?.email===user_data){
@@ -299,7 +300,7 @@ const Dashboard = () => {
     try {
       // console.log(formData);
       await axios.post(
-        'http://127.0.0.1:4000/api/data1/dashboard',
+        `${BASE_URL}/api/data1/dashboard`,
         {
           email: user_data,
           row: rows,

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import '../../src/styles.css';
+import BASE_URL from '../constants/constant';
 
 
 const EditProfileForm = () => {
@@ -14,7 +15,7 @@ const EditProfileForm = () => {
 
   const fetchdata = async () => {
     try {
-        const response = await fetch('http://127.0.0.1:4000/api/dataupdate/profile');
+        const response = await fetch(`${BASE_URL}/api/dataupdate/profile`);
         const data = await response.json()|| {};
         let datavals='';
         data.map((item)=>{
@@ -47,7 +48,7 @@ const EditProfileForm = () => {
 
     try {
       // Make an API request to update the profile in the backend
-      const response = await axios.patch('http://127.0.0.1:4000/api/dataupdate/profile', {
+      const response = await axios.patch(`${BASE_URL}/api/dataupdate/profile`, {
         firstName:firstName,
         lastName:lastName,
         occupation:occupation,

@@ -5,6 +5,7 @@ import '../../src/styles.css';
 import { CategoryScale } from "chart.js";
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import BASE_URL from '../constants/constant';
 
 
 
@@ -57,7 +58,7 @@ const PieChart = () => {
 const fetchData = async () => {
     try {
       
-      await axios.get(`http://127.0.0.1:4000/api/data1/dashboard/${user_data}/1`)
+      await axios.get(`${BASE_URL}/api/data1/dashboard/${user_data}/1`)
       .then((response) => {
         console.log('response',response.data.vals[0]);
         const datavals = response.data.vals[0];
