@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const dotenv = require('dotenv');
 const Data=require('./models/Data')
+const path = require('path');
 
 // Middleware
 app.use(express.json());
@@ -33,7 +34,10 @@ app.use('/api/auth2', require('./routes/auth2'));
 app.use('/api/data1', require('./routes/data1'));
 app.use('/api/dataupdate', require('./routes/dataupdate'));
 
-
+app.use(express.static(path.join(__dirname, 'public')));
+app.get('*',(req,res) => {
+    return res.sendFile(path.join(__dirname, 'public','index.html'));
+});
 app.listen(PORT, () => {
     console.log(`[server] listening on port ${PORT}`);
 });

@@ -1,2 +1,2 @@
-const BASE_URL="https://monthly-savings-expense-recorder-backend-jxej5o8bs.vercel.app/"
+const BASE_URL=""
 export default BASE_URL;
