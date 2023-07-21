@@ -19,13 +19,13 @@ const PORT = process.env.PORT || 4000;
 dotenv.config();
 require('./config/db');
 
-// // Routes
-// app.get('/signup', (req, res) => {
-    // res.status(200).json({
-    //     message: 'Hello World!'
-    // });
-//     console.log(res.status);
-// });
+// Routes
+app.get('/welcome', (req, res) => {
+    res.status(200).json({
+        message: 'Hello World!'
+    });
+    console.log(res.status);
+});
 app.use('/api/auth1', require('./routes/auth1'));
 app.use('/api/auth2', require('./routes/auth2'));
 app.use('/api/data1', require('./routes/data1'));
