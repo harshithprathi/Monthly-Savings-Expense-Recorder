@@ -4,7 +4,7 @@ const User= require("../models/User");
 router.get('/profile', async (req, res) => {
     try {
         const vals= await User.find();
-        console.log(vals);
+        console.log('vals',vals);
         if(vals){
             res.json(vals);
         }

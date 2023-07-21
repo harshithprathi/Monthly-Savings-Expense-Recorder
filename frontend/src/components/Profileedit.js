@@ -15,31 +15,48 @@ const EditProfileForm = () => {
 
   const fetchdata = async () => {
     try {
-        const response = await fetch(`${BASE_URL}/api/dataupdate/profile`);
-        const data = await response.json()|| {};
-        let datavals='';
-        data.map((item)=>{
+        // const response = await fetch(`${BASE_URL}/api/dataupdate/profile`);
+        console.log('getting in to try');
+        await axios.get(`${BASE_URL}/api/data1/dashboard/profile`)
+        .then((response) => {
+          console.log('getting in',response);
+          let data=response.data;
+          const datavals='';
+          console.log('data',data);
+          data.map((item)=>{
             if(item.email===user_data){
                 datavals=item;
+                console.log("datavals1111111",datavals);
+                setFirstName(datavals.firstName);
+                setLastName(datavals.lastName);
+                setOccupation(datavals.occupation);
             }
             else{
+                console.log("datavals failed");
                 alert('You are logged out, please login again.');
                 navigate('/login');
             }
         });
-        console.log("datavals",datavals);
-        setFirstName(datavals.firstName);
-        setLastName(datavals.lastName);
-        setOccupation(datavals.occupation);
+        
+        })
+        .catch((error) =>{
+          console.log("datavals failed");
+          alert('You are logged out, please login again.');
+          navigate('/login');
+          console.log(error);
+        });
+        
 
         
     } catch (error) {
+      console.log('error',error);
         
     }
   };
 
 
   useEffect(() => {
+    console.log('hi');
     fetchdata();
   },[]);
 
