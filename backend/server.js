@@ -24,7 +24,12 @@ app.get('/welcome', (req, res) => {
     res.status(200).json({
         message: 'Hello World!'
     });
-    console.log(res.status);
+});
+
+app.get('/api/welcome', (req, res) => {
+    res.status(200).json({
+        message: 'Hello World api!'
+    });
 });
 app.use('/api/auth1', require('./routes/auth1'));
 app.use('/api/auth2', require('./routes/auth2'));
