@@ -56,7 +56,7 @@ function Login() {
 
     }catch (error) {
         // Handle error from backend
-        console.log('Error:', error.response.data);
+        console.log('Error:', error);
     }
 
 
