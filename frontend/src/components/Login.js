@@ -25,12 +25,13 @@ function Login() {
         await axios.post(`${BASE_URL}/api/auth2/login`, { email: email, password: password })
         .then(res => {
           // console.log(res)
-            if(res.data==="fail"){
-                alert("Failed");
+            console.log('res',res.data);
+            if(res.data==="fail" || res.data==="User not found, please do signup"){
+                alert("User not found, please do signup");
             }
             else{
                 // console.log(res.data);
-                const result = bcryptjs.compare(password, res.data.password);
+                const result = bcryptjs.compare(password, res?.data?.password);
                 if(!res.data){
                     alert("Email not found, please SignUp");
                 }

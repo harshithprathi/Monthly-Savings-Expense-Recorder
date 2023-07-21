@@ -8,8 +8,15 @@ router.post('/login', async(req, res) => {
     };
     try {
         const check = await User.findOne({email: data.email});
+        if(check){
+            console.log("check",check);
+            res.json(check);
+        }
+        else{
+            res.json("User not found, please do signup");
+        }
         
-        res.json(check);
+        // res.json(check);
             
     } catch (err) {
         res.json("Failed");
