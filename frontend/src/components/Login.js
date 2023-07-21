@@ -111,11 +111,6 @@ function Login() {
           <button type="submit" className="login-button" onSubmit={handleSubmit}>Login</button>
         </div>
         <div className="form-group">
-          <button type="button" className="google-signin-button" onClick={handleGoogleSignIn}>
-            Sign in with Google
-          </button>
-        </div>
-        <div className="form-group">
           <button type="button" className="forgot-password-button" onClick={handleForgotPassword}>
             Forgot Password?
           </button>

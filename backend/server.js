@@ -6,7 +6,10 @@ const Data=require('./models/Data')
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: "https://monthly-savings-expense-recorder-frontend.vercel.app/",
+    methods:['GET', 'POST', 'PATCH'],
+}));
 app.use(express.urlencoded({ extended: true }));
 
 // Constants
